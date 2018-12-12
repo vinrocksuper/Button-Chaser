@@ -1,0 +1,18 @@
+.root {
+        -fx-background-color: gray;
+
+      }
+.label{
+        -fx-border-width: 5px;
+         -fx-border-style:solid;
+       -fx-border-color:  green;;
+       -fx-border-radius: 10px;
+        -fx-font-size: 20;
+        -fx-background-color: purple;
+         -fx-background-radius: 100px;
+}
+.button
+{
+    -fx-background-radius: 50px;
+
+}

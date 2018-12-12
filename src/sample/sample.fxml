@@ -1,0 +1,16 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<GridPane fx:controller="sample.SampleController"
+          stylesheets="/sample/sample.css"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Button GridPane.rowIndex ="3" text ="Say 'Hello World'" onAction="#sayHelloWorld"/>
+
+    <Button GridPane.rowIndex ="4" text="+1"  onAction="#increment"/>
+
+    <Label GridPane.rowIndex ="1" fx:id ="helloWorld"/>
+    <Label GridPane.rowIndex="2" fx:id="score"/>
+</GridPane>
