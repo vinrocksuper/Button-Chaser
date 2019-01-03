@@ -84,7 +84,7 @@ public class GameCode implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         {
-            long step = System.nanoTime() + 10000000000L;
+            long step = System.nanoTime() + 1000000000L;
             new AnimationTimer() {
                 @Override
                 public void handle(long now) {
