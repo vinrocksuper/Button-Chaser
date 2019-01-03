@@ -5,11 +5,10 @@
 <?import javafx.scene.control.Label?>
 <GridPane fx:controller="sample.GameCode"
           stylesheets="/sample/sample.css"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <Button GridPane.rowIndex ="4" text="Red" GridPane.columnIndex="1" onAction="#increment"/>
-    <Button GridPane.rowIndex = "4" GridPane.columnIndex="2" text="blue" />
-    <Button GridPane.rowIndex = "4" GridPane.columnIndex="3" text="yellow" />
-    <Button GridPane.rowIndex = "4" GridPane.columnIndex="4" text="green" />
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" >
 
-    <Label GridPane.rowIndex="2" fx:id="score"/>
+    <Button GridPane.rowIndex ="4" text="CLICK" GridPane.columnIndex="1" fx:id="a" onAction="#increment"/>
+    <Button GridPane.rowIndex="5" text="HighScores" GridPane.columnIndex="1" fx:id="b" onAction="#switchPg" visible="false"/>
+
+    <Label GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="score" text="0"/>
 </GridPane>

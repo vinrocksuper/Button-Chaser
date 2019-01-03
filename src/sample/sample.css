@@ -3,11 +3,9 @@
 
       }
 .label{
-       -fx-border-width: 5px;
-       -fx-border-color:  black;
-       -fx-border-radius: 100px;
+      
        -fx-font-size: 20;
-       -fx-background-radius: 1000px;
+
 }
 .button
 {
