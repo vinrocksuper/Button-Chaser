@@ -3,6 +3,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <GridPane fx:controller="sample.GameCode"
           stylesheets="/sample/sample.css"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" >
@@ -11,4 +12,8 @@
     <Button GridPane.rowIndex="5" text="HighScores" alignment="center"  fx:id="b" onAction="#switchPg" visible="false"/>
 
     <Label GridPane.rowIndex="3" alignment="center"  fx:id="score" text="Press the button to start the timer"/>
+
+
+    <TextField GridPane.rowIndex="2" fx:id="field" alignment="center"/>
+
 </GridPane>

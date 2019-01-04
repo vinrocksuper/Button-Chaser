@@ -1,103 +1,99 @@
 package sample;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-import com.sun.prism.impl.Disposer;
-
-import java.io.*;
-import java.nio.Buffer;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BackEnd {
+    public class BackEnd {
 
-   public class writer{
-        private final String COMMA_DELIMITER = ",";
-        private final String NEW_LINE_SEPARATOR = "\n";
-        private final String FILE_HEADER = "name,clicks";
 
-     /**   public void write()
-        {
-            List HighScores = new ArrayList();
 
-            FileWriter fileWriter = null;
-            try{
-                fileWriter = new FileWriter("scores.csv");
-                fileWriter.append(FILE_HEADER.toString());
-                fileWriter.append(NEW_LINE_SEPARATOR);
+        public static List<records> fromCSV(){
 
+
+            List<records> z = new ArrayList<>();
+            Path pathToFile = Paths.get("src/scores.csv");
+
+            try(BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.UTF_8)){
+                String line = br.readLine();
+                if(line == null)
+                {
+                    return z;
+                }
+                while(line != null){
+                    String[] attributes = line.split(",");
+
+                    records temp = records.createRecord(attributes);
+
+                    z.add(temp);
+                    line = br.readLine();
+
+                }
+
+            } catch (IOException ioe)
+            {
+                ioe.printStackTrace();
             }
+            return z;
         }
 
-**/
-        public static void read(){
-            BufferedReader fileReader = null;
-            try{
-                List<records> records = new ArrayList();
-                String s="";
-                fileReader = new BufferedReader(new FileReader("scores.csv"));
-                fileReader.readLine();
-                while((s = fileReader.readLine()) != null){
-                    String[] tokens = s.split(COMMA_DELIMITER);
-                    if(tokens.length>0){
-                        records temp = new records(Integer.parseInt(tokens[0]),tokens[1]);
-                        records.add(temp);
-                    }
-                }
-                for(BackEnd.records x: records){
-                    System.out.println(x);
-                }
 
-            }catch(Exception e){
-                e.printStackTrace();
-            } finally{
-                try{
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        public static class records{
+            private int clicks;
+            private String name;
+
+            public records(int c, String n)
+            {
+                clicks=c;
+                name =n;
             }
-
+            public int getClicks()
+            {
+                return clicks;
+            }
+            public String getName()
+            {
+                return name;
+            }
+            public String toString()
+            {
+                return name + " "+ clicks;
+            }
+            public static records createRecord(String[] info)
+            {
+                String name = info[0];
+                int click = Integer.parseInt(info[1]);
+                return new records(click,name);
+            }
         }
-
+        public static void write(List<records> r) throws IOException{
+            FileWriter x =  new FileWriter("src/scores.csv");
+            x.append(GameCode.name);
+            x.append(",");
+            x.append(String.valueOf(GameCode.count));
+            x.append("\n");
+            while(r.size()>0)
+            {
+                x.append(r.get(0).name);
+                x.append(",");
+                x.append(String.valueOf(r.get(0).clicks));
+                x.append("\n");
+                r.remove(0);
+            }
+            x.flush();
+            x.close();
+        }
     }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public class records{
-        private int clicks;
-        private String name;
-
-        public records(int c, String n)
-        {
-            clicks=c;
-            name =n;
-        }
-        public int getClicks()
-        {
-            return clicks;
-        }
-        public String getName()
-        {
-            return name;
-        }
-        public String toString()
-        {
-            return name + " "+ clicks;
-        }
-    }
-}
 
