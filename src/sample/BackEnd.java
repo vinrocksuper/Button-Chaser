@@ -42,8 +42,10 @@ public class BackEnd {
                         records.add(temp);
                     }
                 }
-                for(records r : records)
-            }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            } finally
 
         }
 
