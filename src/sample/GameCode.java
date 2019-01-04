@@ -9,6 +9,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -64,6 +65,7 @@ public class GameCode implements Initializable {
   public Button a;
   public Button b;
     private int count =0;
+    private boolean start = false;
     private boolean counting = true;
 
 
@@ -79,23 +81,28 @@ public class GameCode implements Initializable {
         Main.window.setScene(Main.s2);
 
     }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        {
-            long step = System.nanoTime() + 1000000000L;
+    public void firstClick(ActionEvent e)
+    {
+        if(!start) {
+            long step = System.nanoTime() + 10000000000L;
             new AnimationTimer() {
                 @Override
                 public void handle(long now) {
-                    if(now > step)
-                    {
+                    if (now > step) {
                         counting = false;
                         score.setText("You ended with " + count);
                         b.setVisible(true);
                     }
                 }
             }.start();
+        }
+        start = true;
+        increment(e);
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        {
+
         }
     }
 }
