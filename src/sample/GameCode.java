@@ -79,12 +79,13 @@ public class GameCode implements Initializable {
     public void switchPg()
     {
         Main.window.setScene(Main.s2);
+        BackEnd.writer.read();
 
     }
     public void firstClick(ActionEvent e)
     {
         if(!start) {
-            long step = System.nanoTime() + 10000000000L;
+            long step = System.nanoTime() + 1000000000L;
             new AnimationTimer() {
                 @Override
                 public void handle(long now) {

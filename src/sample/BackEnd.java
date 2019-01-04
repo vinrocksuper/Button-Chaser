@@ -9,12 +9,12 @@ import java.util.List;
 
 public class BackEnd {
 
-    public class writer{
+   public class writer{
         private final String COMMA_DELIMITER = ",";
         private final String NEW_LINE_SEPARATOR = "\n";
         private final String FILE_HEADER = "name,clicks";
 
-        public void write()
+     /**   public void write()
         {
             List HighScores = new ArrayList();
 
@@ -27,11 +27,11 @@ public class BackEnd {
             }
         }
 
-
-        public void read(){
+**/
+        public static void read(){
             BufferedReader fileReader = null;
             try{
-                List records = new ArrayList();
+                List<records> records = new ArrayList();
                 String s="";
                 fileReader = new BufferedReader(new FileReader("scores.csv"));
                 fileReader.readLine();
@@ -42,10 +42,19 @@ public class BackEnd {
                         records.add(temp);
                     }
                 }
+                for(BackEnd.records x: records){
+                    System.out.println(x);
+                }
 
             }catch(Exception e){
                 e.printStackTrace();
-            } finally
+            } finally{
+                try{
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
         }
 
@@ -84,6 +93,10 @@ public class BackEnd {
         public String getName()
         {
             return name;
+        }
+        public String toString()
+        {
+            return name + " "+ clicks;
         }
     }
 }
